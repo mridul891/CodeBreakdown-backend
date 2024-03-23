@@ -5,16 +5,21 @@ import dotenv from 'dotenv';
 
 const app = express();
 const port = 8080;
-
+const corsOptions = {
+    origin: ['http://localhost:5173/', "http://localhost:8080/"],
+    // You can also use an array of allowed origins:
+    // origin: ['http://domain1.com', 'http://domain2.com']
+};
 app.use(express.json());
 app.use(cors());
 dotenv.config({
     path: ".env"
 })
 
-app.use("/", (req, res) => {
-    res.json({ message: "Hello from Express App" })
+app.get("/", (req, res) => {
+    res.send("hello world");
 })
+
 app.post("/completions", async (req, res) => {
     const options = {
         method: "POST",
@@ -26,7 +31,7 @@ app.post("/completions", async (req, res) => {
             model: "gpt-3.5-turbo",
             messages: [{
                 role: "user",
-                content: req.body.message + `"convert this ${req.body.codelang1} code to ${req.body.codelang2} with comments"`
+                content: req.body.message + `"convert this ${req.body.codelang1} code to ${req.body.codelang2}"`
             }],
         })
     }
