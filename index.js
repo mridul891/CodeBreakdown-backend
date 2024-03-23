@@ -6,7 +6,9 @@ import dotenv from 'dotenv';
 const app = express();
 const port = 8080;
 const corsOptions = {
-    origin: ['http://localhost:5173', "http://localhost:8080/"],
+    origin: 'http://localhost:5173',
+    Credential:true,
+    method:["POST" ,"GET"]
     // You can also use an array of allowed origins:
     // origin: ['http://domain1.com', 'http://domain2.com']
 };
