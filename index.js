@@ -6,12 +6,12 @@ import dotenv from 'dotenv';
 const app = express();
 const port = 8080;
 const corsOptions = {
-    origin: ['http://localhost:5173/', "http://localhost:8080/"],
+    origin: ['http://localhost:5173', "http://localhost:8080/"],
     // You can also use an array of allowed origins:
     // origin: ['http://domain1.com', 'http://domain2.com']
 };
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
 dotenv.config({
     path: ".env"
 })
@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
 
 app.post("/completions", async (req, res) => {
     const options = {
-        method: "POST",
+        method: ["POST", 'GET'],
         headers: {
             "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
             "Content-Type": "application/json"
