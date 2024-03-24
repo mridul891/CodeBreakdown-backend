@@ -11,7 +11,7 @@ const corsOptions = {
     // origin: ['http://domain1.com', 'http://domain2.com']
 };
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
 dotenv.config({
     path: ".env"
 })
