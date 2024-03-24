@@ -6,7 +6,7 @@ import dotenv from 'dotenv';
 const app = express();
 const port = process.env.PORT
 const corsOptions = {
-    origin: ['http://localhost:5173', "http://localhost:8080/","https://code-breakdown-frontend.vercel.app/"],
+    origin: ['http://localhost:5173','https://code-breakdown-frontend.vercel.app/'],
     // You can also use an array of allowed origins:
     // origin: ['http://domain1.com', 'http://domain2.com']
 };
