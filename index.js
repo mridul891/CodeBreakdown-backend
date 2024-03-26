@@ -47,6 +47,9 @@ app.post("/completions", async (req, res) => {
 
 connectDb()
     .then(() => {
+        app.use((req, res) => {
+            res.send("This is the Api For The Backend Of the  Code Breakdown Application")
+        })
         app.listen(process.env.PORT || 8000, () => {
             console.log(`Server is running at ${process.env.PORT}`)
         })
