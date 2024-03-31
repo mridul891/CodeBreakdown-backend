@@ -3,10 +3,11 @@ dotenv.config({
     path: ".env"
 })
 export const convert = async (req, res) => {
+    const api_key = process.env.OPENAI_API_KEY
     const options = {
         method: ["POST"],
         headers: {
-            "Authorization": "Bearer" + process.env.OPENAI_API_KEY,
+            "Authorization": `Bearer  ${api_key}`,
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
