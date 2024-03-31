@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import connectDb from "./ConnectDB/index.js";
 import userRouter from "./Routes/routes.js";
 import codeRouter from "./Routes/datarotues.js";
+import generateRouter from "./Routes/generateroute.js";
 
 const app = express();
 const port = 8080
@@ -21,7 +22,7 @@ dotenv.config({
 
 app.use('/users', userRouter);
 app.use("/completions", codeRouter);
-
+app.use('/generator', generateRouter);
 connectDb()
     .then(() => {
         app.use((req, res) => {
