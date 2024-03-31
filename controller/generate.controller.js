@@ -20,7 +20,7 @@ export const generate = async (req, res) => {
 
     try {
         const response = await fetch('https://api.openai.com/v1/chat/completions', options);
-        const data = response.json();
+        const data = await response.json();
         res.send(data)
     } catch (error) {
         console.log(error)
