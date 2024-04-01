@@ -23,6 +23,7 @@ dotenv.config({
 app.use('/users', userRouter);
 app.use("/completions", codeRouter);
 app.use('/generator', generateRouter);
+
 connectDb()
     .then(() => {
         app.use((req, res) => {
