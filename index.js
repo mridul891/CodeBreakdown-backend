@@ -5,6 +5,7 @@ import connectDb from "./ConnectDB/index.js";
 import userRouter from "./Routes/routes.js";
 import codeRouter from "./Routes/datarotues.js";
 import generateRouter from "./Routes/generateroute.js";
+import cookieParser from "cookie-parser";
 
 const app = express();
 const port = 8080
@@ -14,6 +15,7 @@ const corsOptions = {
     // origin: ['http://domain1.com', 'http://domain2.com']
 };
 app.use(express.json());
+app.use(cookieParser())
 app.use(cors(corsOptions));
 dotenv.config({
     path: ".env"

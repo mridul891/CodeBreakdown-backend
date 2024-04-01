@@ -1,6 +1,7 @@
 import { user } from '../models/user.models.js'
 import jwt from "jsonwebtoken"
 import bcrypt from 'bcrypt'
+import cookieParser from 'cookie-parser'
 const SECRET_KEY = 'USERSELECTION'
 export const signup = async (req, res) => {
     // Existing user
@@ -45,7 +46,11 @@ export const signin = async (req, res) => {
         }
 
         const token = jwt.sign({ email: existingUser.email, id: existingUser._id }, SECRET_KEY);
-        res.cookie("uid", token.toke);
+        const options = {
+            expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
+            httpOnly: true
+        }
+        res.cookie("token", token, options);
         res.status(201).json({ user: existingUser, toke: token });
     } catch (error) {
         console.log(error);
