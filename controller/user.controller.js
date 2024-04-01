@@ -50,8 +50,7 @@ export const signin = async (req, res) => {
             expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
             httpOnly: true
         };
-        res.status(206).cookie("token", token, options);
-        res.status(201).json({ user: existingUser, token: token });
+        res.status(200).cookie("token", token, options).json({ user: existingUser, token: token });
     } catch (error) {
         console.log(error);
         res.status(500).json({ message: "SomeThing got wrong" })
