@@ -50,7 +50,7 @@ export const signin = async (req, res) => {
             expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
             httpOnly: true
         };
-        res.status(206).cookie("token", token, options).json({ message: "The token is saved" });
+        res.status(206).cookie("token", token, options);
         res.status(201).json({ user: existingUser, token: token });
     } catch (error) {
         console.log(error);
