@@ -45,7 +45,7 @@ export const signin = async (req, res) => {
         }
 
         const token = jwt.sign({ email: existingUser.email, id: existingUser._id }, SECRET_KEY);
-        res.cookie("uid", token);
+        res.cookie("uid", token.toke);
         res.status(201).json({ user: existingUser, toke: token });
     } catch (error) {
         console.log(error);
