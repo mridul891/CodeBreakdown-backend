@@ -51,7 +51,7 @@ export const signin = async (req, res) => {
             expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
             httpOnly: true
         };
-        await res.cookie("tokens", token);
+        await res.cookie("tokens", token, { maxAge: 900000, httpOnly: true });
         res.json({ user: existingUser, token: token });
     } catch (error) {
         console.log(error);

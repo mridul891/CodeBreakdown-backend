@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-const DB_NAME = "CODEBREAKDOWN"
 
 const connectDb = async () => {
     try {
