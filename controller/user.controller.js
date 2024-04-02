@@ -1,6 +1,7 @@
 import { user } from '../models/user.models.js'
 import jwt from "jsonwebtoken"
 import bcrypt from 'bcrypt'
+import { cookieParser } from 'cookie-parser';
 
 const SECRET_KEY = 'USERSELECTION'
 export const signup = async (req, res) => {
@@ -10,6 +11,7 @@ export const signup = async (req, res) => {
     // Token Generate
     const { name, email, password } = req.body;
     try {
+        const cookie = cookieParser();
         const existingUser = await user.findOne({ email: email });
         if (existingUser) {
             return res.status(400).json({ message: "User already exists .Please Login" });
