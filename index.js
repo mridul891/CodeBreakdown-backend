@@ -8,14 +8,14 @@ import generateRouter from "./Routes/generateroute.js";
 import cookieParser from "cookie-parser";
 
 const app = express();
-const port = 8080
+const port = process.env.PORT || 8080
 const corsOptions = {
     origin: ['http://localhost:5173', 'https://code-breakdown-frontend.vercel.app'],
     // You can also use an array of allowed origins:
     // origin: ['http://domain1.com', 'http://domain2.com']
 };
+app.use(cookieParser());
 app.use(express.json());
-app.use(cookieParser())
 app.use(cors(corsOptions));
 dotenv.config({
     path: ".env"
