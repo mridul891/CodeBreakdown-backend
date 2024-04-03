@@ -53,6 +53,7 @@ export const signin = async (req, res) => {
         };
         await res.cookie("tokens", token, { maxAge: 900000, httpOnly: true });
         res.json({ user: existingUser, token: token });
+        return res;
     } catch (error) {
         console.log(error);
         res.status(500).json({ message: "SomeThing got wrong" })
