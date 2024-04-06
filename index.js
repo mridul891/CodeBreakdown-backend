@@ -11,14 +11,13 @@ const app = express();
 const port = process.env.PORT || 8080
 app.use(cookieParser());
 const corsOptions = {
-    origin: ['http://localhost:5173', 'https://code-breakdown-frontend.vercel.app'],
-    // You can also use an array of allowed origins:
-    // origin: ['http://domain1.com', 'http://domain2.com']
+    credentials: true,
+    origin: ['http://localhost:5173', 'https://code-breakdown-frontend.vercel.app','*'],
 };
 app.use(express.json());
 app.use(cors(corsOptions));
 dotenv.config({
-    path: ".env" 
+    path: ".env"
 })
 
 
