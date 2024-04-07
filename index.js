@@ -12,7 +12,7 @@ const port = process.env.PORT || 8080
 app.use(cookieParser());
 const corsOptions = {
     credentials: true,
-    origin: ['http://localhost:5173', 'https://code-breakdown-frontend.vercel.app', 'https://stirring-belekoy-b6c038.netlify.app'],
+    origin: ['http://localhost:5173', 'https://code-breakdown-frontend.vercel.app', 'https://codebreakdown.netlify.app'],
 };
 app.use(express.json());
 app.use(cors(corsOptions));
