@@ -47,12 +47,7 @@ export const signin = async (req, res) => {
         }
 
         const token = await jwt.sign({ email: existingUser.email, id: existingUser._id }, SECRET_KEY, { expiresIn: "30d" });
-        const options = {
-            expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
-            httpOnly: true
-        };
-
-        res.cookie("tokens", token, { maxAge: 900000, httpOnly: true, secure: true })
+        await res.cookie("values", token, { maxAge: 900000, httpOnly: true, secure: true })
         return res.status(200).json({ user: existingUser, token: token });
 
 
