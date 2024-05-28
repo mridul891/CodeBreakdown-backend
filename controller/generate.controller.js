@@ -5,7 +5,7 @@ dotenv.config({
 export const generate = async (req, res) => {
     const api_key = process.env.OPENAI_API_KEY
     const options = {
-        method: ['POST'],
+        method: 'POST',
         headers: {
             "Authorization": `Bearer ${api_key}`,
             "Content-Type": "application/json"
@@ -22,6 +22,7 @@ export const generate = async (req, res) => {
     try {
         const response = await fetch('https://api.openai.com/v1/chat/completions', options);
         const data = await response.json();
+        console.log(data)
         res.send(data)
     } catch (error) {
         console.log(error)
