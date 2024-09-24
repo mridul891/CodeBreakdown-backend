@@ -25,6 +25,9 @@ app.use('/users', userRouter);
 app.use("/completions", codeRouter);
 app.use('/generator', generateRouter);
 
+app.get("/", (req, res) => {
+    res.json({ message: "Reached Here" });
+})
 connectDb()
     .then(() => {
         app.use((req, res) => {
